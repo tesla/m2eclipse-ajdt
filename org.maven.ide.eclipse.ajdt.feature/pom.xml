@@ -11,13 +11,11 @@
 
   <parent>
     <groupId>org.maven.ide.eclipse</groupId>
-    <artifactId>parent</artifactId>
-    <version>0.9.9-SNAPSHOT</version>
-    <relativePath>../org.maven.ide.eclipse.parent</relativePath>
+    <artifactId>org.maven.ide.eclipse.ajdt.parent</artifactId>
+    <version>0.10.3-SNAPSHOT</version>
   </parent>
 
   <artifactId>org.maven.ide.eclipse.ajdt.feature</artifactId>
-  <version>${m2eclipse.version}</version>
   <packaging>eclipse-feature</packaging>
 
   <name>Maven Integration for AJDT (Optional)</name>

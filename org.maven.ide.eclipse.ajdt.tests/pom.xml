@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.maven.ide.eclipse</groupId>
+    <groupId>org.maven.ide.eclipse.ajdt</groupId>
     <artifactId>org.maven.ide.eclipse.ajdt.parent</artifactId>
     <version>0.10.3-SNAPSHOT</version>
   </parent>
@@ -19,28 +19,5 @@
   <packaging>eclipse-test-plugin</packaging>
 
   <name>Maven Integration for Eclipse AJDT tests</name>
-  
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-    <resources>
-      <resource>
-        <directory>src</directory>
-        <excludes>
-          <exclude>**/*.java</exclude>
-        </excludes>
-      </resource>
-    </resources>
-    
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.tycho</groupId>
-        <artifactId>maven-osgi-test-plugin</artifactId>
-        <configuration>
-          <!-- Temporarily disabling because AJDT on Eclipse 3.4 keeps popping up a dialog asking if weaving should be enabled, which causes test to hang. -->
-          <skip>true</skip>
-        </configuration>
-      </plugin>
-    </plugins>    
-  </build>
 
 </project>

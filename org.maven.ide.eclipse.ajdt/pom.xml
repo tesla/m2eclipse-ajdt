@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.maven.ide.eclipse</groupId>
+    <groupId>org.maven.ide.eclipse.ajdt</groupId>
     <artifactId>org.maven.ide.eclipse.ajdt.parent</artifactId>
     <version>0.10.3-SNAPSHOT</version>
   </parent>
@@ -19,29 +19,5 @@
   <packaging>eclipse-plugin</packaging>
 
   <name>Maven Integration for Eclipse AJDT</name>
-
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-
-    <resources>
-    <resource>
-      <directory>${basedir}/src</directory>
-      <includes>
-        <include>**/*.properties</include>
-      </includes>
-    </resource>
-  </resources>
-
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.tycho</groupId>
-        <artifactId>maven-osgi-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 
 </project>

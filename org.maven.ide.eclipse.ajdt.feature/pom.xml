@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.maven.ide.eclipse</groupId>
+    <groupId>org.maven.ide.eclipse.ajdt</groupId>
     <artifactId>org.maven.ide.eclipse.ajdt.parent</artifactId>
     <version>0.10.3-SNAPSHOT</version>
   </parent>
@@ -21,17 +21,86 @@
   <name>Maven Integration for AJDT (Optional)</name>
 
   <build>
-    <sourceDirectory>src</sourceDirectory>
-
     <plugins>
       <plugin>
-        <groupId>org.codehaus.tycho</groupId>
+        <groupId>org.sonatype.tycho</groupId>
         <artifactId>maven-osgi-packaging-plugin</artifactId>
         <configuration>
-          <featureOnly>true</featureOnly>
+          <deployableFeature>true</deployableFeature>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.sonatype.tycho</groupId>
+        <artifactId>tycho-p2-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>categorization</id>
+            <phase>package</phase>
+            <goals>
+              <goal>category-p2-metadata</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <metadataRepositoryName>Maven Integration for Eclipse AJDT</metadataRepositoryName>
+          <artifactRepositoryName>Maven Integration for Eclipse AJDT</artifactRepositoryName>
+          <compressRepository>false</compressRepository>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.2-beta-4</version>
+        <configuration>
+          <descriptors>
+            <descriptor>src/main/assembly/assembly.xml</descriptor>
+          </descriptors>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id> 
+            <phase>package</phase> 
+            <goals>
+              <goal>single</goal> 
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>publish-site</id>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>maven-upload-plugin</artifactId>
+            <version>0.0.1</version>
+            <executions>
+              <execution>
+                <id>publish-site</id>
+                <phase>deploy</phase>
+                <goals>
+                  <goal>upload-file</goal>
+                </goals>
+                <configuration>
+                  <file>${project.build.directory}/${project.artifactId}-${project.version}-site.zip</file>
+
+                  <serverId>forge-releases</serverId>
+                  <repositoryUrl>${m2e.site-compressed}</repositoryUrl>
+                  <repositoryPath>m2eclipse-ajdt/${unqualifiedVersion}/N/${unqualifiedVersion}.${buildQualifier}</repositoryPath>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
 </project>

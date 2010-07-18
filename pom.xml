@@ -16,7 +16,7 @@
     <version>6</version>
   </parent>
 
-  <groupId>org.maven.ide.eclipse</groupId>
+  <groupId>org.maven.ide.eclipse.ajdt</groupId>
   <artifactId>org.maven.ide.eclipse.ajdt.parent</artifactId>
   <version>0.10.3-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -35,7 +35,6 @@
     <module>org.maven.ide.eclipse.ajdt</module>
     <module>org.maven.ide.eclipse.ajdt.tests</module>
     <module>org.maven.ide.eclipse.ajdt.feature</module>
-    <module>org.maven.ide.eclipse.ajdt.site-ajdt</module>
   </modules>
 
   <repositories>
@@ -73,7 +72,7 @@
         <version>${tycho-version}</version>
         <configuration>
           <resolver>p2</resolver>
-		   <target>
+          <target>
             <artifact>
               <groupId>org.maven.ide.eclipse</groupId>
               <artifactId>org.maven.ide.eclipse.ajdt.target-platform</artifactId>

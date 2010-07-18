@@ -27,7 +27,8 @@
     <tycho-version>0.9.0</tycho-version>
     <m2eclipse-core.version>0.10.2.20100623-1649</m2eclipse-core.version>
     <m2eclipse-core.site>0.10.2/S/${m2eclipse-core.version}</m2eclipse-core.site>
-    <target.platform>m2e-e36</target.platform>        
+    <target.platform>m2e-e36</target.platform> 
+    <m2e.site-compressed>http://repository.sonatype.org/service/local/repositories/forge-sites/content-compressed/</m2e.site-compressed>
   </properties>
 
   <modules>
@@ -74,7 +75,7 @@
           <resolver>p2</resolver>
           <target>
             <artifact>
-              <groupId>org.maven.ide.eclipse</groupId>
+              <groupId>org.maven.ide.eclipse.ajdt</groupId>
               <artifactId>org.maven.ide.eclipse.ajdt.target-platform</artifactId>
               <version>${project.version}</version>
               <classifier>${target.platform}</classifier>

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Maven Integration for Eclipse AJDT
 Bundle-SymbolicName: org.maven.ide.eclipse.ajdt;singleton:=true
-Bundle-Version: 0.10.3.qualifier
+Bundle-Version: 0.12.0.qualifier
 Bundle-RequiredExecutionEnvironment: J2SE-1.5,
  JavaSE-1.6
 Require-Bundle: org.eclipse.ajdt.core;bundle-version="1.5.0",

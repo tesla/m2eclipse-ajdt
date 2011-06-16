@@ -20,12 +20,13 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.maven.ide.eclipse.jdt.IClasspathDescriptor;
-import org.maven.ide.eclipse.jdt.IClasspathEntryDescriptor;
-import org.maven.ide.eclipse.jdt.IJavaProjectConfigurator;
-import org.maven.ide.eclipse.project.IMavenProjectFacade;
-import org.maven.ide.eclipse.project.configurator.AbstractProjectConfigurator;
-import org.maven.ide.eclipse.project.configurator.ProjectConfigurationRequest;
+import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.m2e.core.project.IMavenProjectFacade;
+import org.eclipse.m2e.core.project.configurator.AbstractProjectConfigurator;
+import org.eclipse.m2e.core.project.configurator.ProjectConfigurationRequest;
+import org.eclipse.m2e.jdt.IClasspathDescriptor;
+import org.eclipse.m2e.jdt.IClasspathEntryDescriptor;
+import org.eclipse.m2e.jdt.IJavaProjectConfigurator;
 
 
 /**
@@ -44,6 +45,10 @@ public class AjdtProjectConfigurator extends AbstractProjectConfigurator impleme
     MavenProject mavenProject = request.getMavenProject();
     IProject project = request.getProject();
     if(AspectJPluginConfiguration.isAspectJProject(mavenProject, project)) {
+      if(!project.hasNature(JavaCore.NATURE_ID)){
+        addNature(project, JavaCore.NATURE_ID, monitor);
+      }
+      
       if(!project.hasNature(AspectJPlugin.ID_NATURE)) {
         addNature(project, AspectJPlugin.ID_NATURE, monitor);
       }
@@ -82,12 +87,12 @@ public class AjdtProjectConfigurator extends AbstractProjectConfigurator impleme
           String key = descriptor.getGroupId() + ":" + descriptor.getArtifactId();
           Set<String> aspectLibraries = config.getAspectLibraries(); // from pom.xml
           if(aspectLibraries != null && aspectLibraries.contains(key)) {
-            descriptor.addClasspathAttribute(AspectJCorePreferences.ASPECTPATH_ATTRIBUTE);
+            descriptor.setClasspathAttribute(AspectJCorePreferences.ASPECTPATH_ATTRIBUTE.getName(), AspectJCorePreferences.ASPECTPATH_ATTRIBUTE.getValue());
             continue;
           }
           Set<String> inpathDependencies = config.getInpathDependencies();
           if (inpathDependencies != null && inpathDependencies.contains(key)) {
-            descriptor.addClasspathAttribute(AspectJCorePreferences.INPATH_ATTRIBUTE);
+            descriptor.setClasspathAttribute(AspectJCorePreferences.INPATH_ATTRIBUTE.getName(), AspectJCorePreferences.INPATH_ATTRIBUTE.getValue());
           }
         }
       }

@@ -13,21 +13,21 @@
   <parent>
     <groupId>org.sonatype.forge</groupId>
     <artifactId>forge-parent</artifactId>
-    <version>6</version>
+    <version>10</version>
   </parent>
 
   <groupId>org.maven.ide.eclipse.ajdt</groupId>
   <artifactId>org.maven.ide.eclipse.ajdt.parent</artifactId>
-  <version>0.12.0-SNAPSHOT</version>
+  <version>0.13.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Maven Integration for Eclipse AJDT (Parent)</name>
 
   <properties>
-    <tycho-version>0.10.0</tycho-version>
-    <m2eclipse-core.version>0.10.2.20100623-1649</m2eclipse-core.version>
-    <m2eclipse-core.site>0.10.2/S/${m2eclipse-core.version}</m2eclipse-core.site>
-    <target.platform>m2e-e36</target.platform> 
+    <tycho-version>0.12.0</tycho-version>
+    <m2eclipse-core.version>1.0.0.201106061504</m2eclipse-core.version>
+    <m2eclipse-core.site>1.0.0/N/${m2eclipse-core.version}</m2eclipse-core.site>
+    <target.platform>m2e-wtp-e37</target.platform> 
     <m2e.site-compressed>http://repository.sonatype.org/service/local/repositories/forge-sites/content-compressed/</m2e.site-compressed>
   </properties>
 
@@ -61,14 +61,14 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.sonatype.tycho</groupId>
+        <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-maven-plugin</artifactId>
         <version>${tycho-version}</version>
         <extensions>true</extensions>
       </plugin>
 
       <plugin>
-        <groupId>org.sonatype.tycho</groupId>
+        <groupId>org.eclipse.tycho</groupId>
         <artifactId>target-platform-configuration</artifactId>
         <version>${tycho-version}</version>
         <configuration>
@@ -89,7 +89,7 @@
     <pluginManagement>
       <plugins>
         <plugin>
-          <groupId>org.sonatype.tycho</groupId>
+          <groupId>org.eclipse.tycho</groupId>
           <artifactId>maven-osgi-test-plugin</artifactId>
           <version>${tycho-version}</version>
           <configuration>

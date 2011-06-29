@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.6"?>
 
-<target name="m2e-e37" sequenceNumber="6">
+<target name="m2e-e37" sequenceNumber="7">
 <locations>
 <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.swtbot.forms.feature.group" version="2.0.4.20110304_0338-e5aff47-dev-e36"/>
@@ -31,6 +31,13 @@
 <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.platform.sdk" version="3.7.0.I20110613-1736"/>
 <repository location="http://download.eclipse.org/eclipse/updates/3.7"/>
+</location>
+<location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.m2e.sdk.feature.feature.group" version="1.0.0.201106052308"/>
+<unit id="org.eclipse.m2e.feature.feature.group" version="1.0.0.201106052308"/>
+<unit id="org.eclipse.m2e.site.feature.group" version="1.0.0.201106052308"/>
+<unit id="org.eclipse.m2e.logback.feature.feature.group" version="1.0.0.201106052308"/>
+<repository location="http://download.eclipse.org/technology/m2e/milestones/1.0"/>
 </location>
 </locations>
 </target>

@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.7"?>
+<?pde version="3.6"?>
 
-<target name="m2e-e37">
+<target name="m2e-e37" sequenceNumber="6">
 <locations>
-<location includeAllPlatforms="false" includeMode="planner" type="InstallableUnit">
-<unit id="org.eclipse.sdk.ide" version="3.7.0.I20110526-1708"/>
-<repository location="http://download.eclipse.org/releases/indigo"/>
-</location>
-<location includeAllPlatforms="false" includeMode="planner" type="InstallableUnit">
-<unit id="org.eclipse.ajdt.feature.group" version="2.1.3.e37x-20110613-1700"/>
-<repository location="http://download.eclipse.org/tools/ajdt/37/dev/update"/>
-</location>
-<location includeAllPlatforms="false" includeMode="planner" type="InstallableUnit">
+<location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.swtbot.forms.feature.group" version="2.0.4.20110304_0338-e5aff47-dev-e36"/>
 <unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.0.4.20110304_0338-e5aff47-dev-e36"/>
 <unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="2.0.4.20110304_0338-e5aff47-dev-e36"/>
 <unit id="org.eclipse.swtbot.feature.group" version="2.0.4.20110304_0338-e5aff47-dev-e36"/>
@@ -20,11 +13,24 @@
 <unit id="org.eclipse.swtbot.eclipse.test.junit4.feature.group" version="2.0.4.20110304_0338-e5aff47-dev-e36"/>
 <repository location="http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site/"/>
 </location>
-<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.m2e.sdk.feature.feature.group" version="1.0.0.201106061504"/>
-<unit id="org.eclipse.m2e.feature.feature.group" version="1.0.0.201106061504"/>
-<repository location="https://repository.sonatype.org/content/sites/forge-sites/m2e/1.0.0/N/1.0.0.201106061504/"/>
+<location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.ajdt.feature.group" version="2.1.3.e37x-20110628-1900"/>
+<unit id="org.eclipse.ajdt.source.feature.group" version="2.1.3.e37x-20110628-1900"/>
+<unit id="org.eclipse.contribution.xref.source.feature.group" version="2.1.3.e37x-20110628-1900"/>
+<unit id="org.eclipse.contribution.weaving.source.feature.group" version="2.1.3.e37x-20110628-1900"/>
+<unit id="org.eclipse.contribution.xref.feature.group" version="2.1.3.e37x-20110628-1900"/>
+<unit id="org.eclipse.contribution.weaving.feature.group" version="2.1.3.e37x-20110628-1900"/>
+<unit id="org.eclipse.equinox.weaving.sdk.feature.group" version="1.0.100.HEAD"/>
+<repository location="http://download.eclipse.org/tools/ajdt/37/update"/>
+</location>
+<location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.rcp.sdk.id" version="3.7.0.I20110613-1736"/>
+<unit id="org.eclipse.sdk.ide" version="3.7.0.I20110613-1736"/>
+<repository location="http://download.eclipse.org/releases/indigo"/>
+</location>
+<location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.platform.sdk" version="3.7.0.I20110613-1736"/>
+<repository location="http://download.eclipse.org/eclipse/updates/3.7"/>
 </location>
 </locations>
 </target>
-

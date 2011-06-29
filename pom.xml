@@ -18,16 +18,16 @@
 
   <groupId>org.maven.ide.eclipse.ajdt</groupId>
   <artifactId>org.maven.ide.eclipse.ajdt.parent</artifactId>
-  <version>0.12.0-SNAPSHOT</version>
+  <version>0.13.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Maven Integration for Eclipse AJDT (Parent)</name>
 
   <properties>
-    <tycho-version>0.10.0</tycho-version>
-    <m2eclipse-core.version>0.10.2.20100623-1649</m2eclipse-core.version>
-    <m2eclipse-core.site>0.10.2/S/${m2eclipse-core.version}</m2eclipse-core.site>
-    <target.platform>m2e-e36</target.platform> 
+    <tycho-version>0.12.0</tycho-version>
+    <m2eclipse-core.version>1.0.0.201106061504</m2eclipse-core.version>
+    <m2eclipse-core.site>1.0.0/N/${m2eclipse-core.version}</m2eclipse-core.site>
+    <target.platform>m2e-e37</target.platform> 
     <m2e.site-compressed>http://repository.sonatype.org/service/local/repositories/forge-sites/content-compressed/</m2e.site-compressed>
   </properties>
 
@@ -39,36 +39,19 @@
   </modules>
 
   <repositories>
-    <!--
-    <repository>
-      <id>galileo</id>
-      <layout>p2</layout>
-      <url>http://download.eclipse.org/releases/galileo</url>
-    </repository>
-    <repository>
-      <id>helios</id>
-      <layout>p2</layout>
-      <url>http://download.eclipse.org/releases/helios</url>
-    </repository>
-    -->
-    <repository>
-      <id>m2e</id>
-      <layout>p2</layout>
-      <url>http://repository.sonatype.org/content/sites/forge-sites/m2e/${m2eclipse-core.site}</url>
-    </repository>
   </repositories>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.sonatype.tycho</groupId>
+        <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-maven-plugin</artifactId>
         <version>${tycho-version}</version>
         <extensions>true</extensions>
       </plugin>
 
       <plugin>
-        <groupId>org.sonatype.tycho</groupId>
+        <groupId>org.eclipse.tycho</groupId>
         <artifactId>target-platform-configuration</artifactId>
         <version>${tycho-version}</version>
         <configuration>
@@ -89,7 +72,7 @@
     <pluginManagement>
       <plugins>
         <plugin>
-          <groupId>org.sonatype.tycho</groupId>
+          <groupId>org.eclipse.tycho</groupId>
           <artifactId>maven-osgi-test-plugin</artifactId>
           <version>${tycho-version}</version>
           <configuration>

@@ -8,30 +8,35 @@
 
 package org.maven.ide.eclipse.ajdt;
 
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Set;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.apache.maven.plugin.MojoExecution;
 import org.apache.maven.project.MavenProject;
+
 import org.eclipse.ajdt.core.AspectJCorePreferences;
 import org.eclipse.ajdt.core.AspectJPlugin;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+
 import org.eclipse.m2e.core.project.IMavenProjectFacade;
 import org.eclipse.m2e.core.project.configurator.ProjectConfigurationRequest;
 import org.eclipse.m2e.jdt.AbstractJavaProjectConfigurator;
 import org.eclipse.m2e.jdt.IClasspathDescriptor;
 import org.eclipse.m2e.jdt.IClasspathEntryDescriptor;
+
+import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.m2e.core.project.configurator.AbstractProjectConfigurator;
+import org.eclipse.m2e.jdt.IJavaProjectConfigurator;
 
 
 /**
@@ -48,38 +53,20 @@ public class AjdtProjectConfigurator extends AbstractJavaProjectConfigurator {
   
   public void configure(ProjectConfigurationRequest request, IProgressMonitor monitor)
       throws CoreException {
-    MavenProject mavenProject = request.getMavenProject();
     IProject project = request.getProject();
-    if(AspectJPluginConfiguration.isAspectJProject(mavenProject, project)) {
-      if(!project.hasNature(AspectJPlugin.ID_NATURE)) {
-        addNature(project, AspectJPlugin.ID_NATURE, monitor);
-      }
-    } else {
-      removeAjdtNature(project);
+      
+    // Have to do this, since this may run before the jdt configurer
+    if(!project.hasNature(JavaCore.NATURE_ID)){
+      addNature(project, JavaCore.NATURE_ID, monitor);
     }
-  }
-
-  private void removeAjdtNature(IProject project) throws CoreException {
-    IProjectDescription description = project.getDescription();
-    ArrayList<String> natures = new ArrayList<String>(Arrays.asList(description.getNatureIds()));
-    boolean updated = false;
-    for(Iterator<String> it = natures.iterator(); it.hasNext();) {
-      String nature = it.next();
-      if(AspectJPlugin.ID_NATURE.equals(nature)) {
-        it.remove();
-        updated = true;
-      }
-    }
-
-    if(updated) {
-      description.setNatureIds(natures.toArray(new String[natures.size()]));
-      project.setDescription(description, null);
+    
+    if(!project.hasNature(AspectJPlugin.ID_NATURE)) {
+      addNature(project, AspectJPlugin.ID_NATURE, monitor);
     }
   }
 
   public void configureClasspath(IMavenProjectFacade facade, IClasspathDescriptor classpath, IProgressMonitor monitor)
       throws CoreException {
-
     if(isAjdtProject(facade.getProject())) {
       // TODO cache in facade.setSessionProperty
       AspectJPluginConfiguration config = AspectJPluginConfiguration.create( //
@@ -102,9 +89,10 @@ public class AjdtProjectConfigurator extends AbstractJavaProjectConfigurator {
           }
         }
       }
-
     }
+
   }
+
 
   protected File[] getSourceFolders( ProjectConfigurationRequest request, MojoExecution mojoExecution )
       throws CoreException

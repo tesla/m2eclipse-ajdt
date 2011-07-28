@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
-	<extension point="org.eclipse.m2e.core.lifecycleMappingMetadataSource" />
    <extension
          point="org.eclipse.m2e.core.projectConfigurators">
       <configurator

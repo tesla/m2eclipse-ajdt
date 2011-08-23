@@ -2,7 +2,7 @@
 <feature
       id="org.maven.ide.eclipse.ajdt.feature"
       label="%featureName"
-      version="0.13.0.qualifier"
+      version="0.13.0.e36"
       provider-name="%providerName">
 
    <description url="%descriptionURL">
@@ -29,7 +29,7 @@
          id="org.maven.ide.eclipse.ajdt"
          download-size="0"
          install-size="0"
-         version="0.13.0.qualifier"
+         version="0.13.0.e36"
          unpack="false"/>
 
 </feature>

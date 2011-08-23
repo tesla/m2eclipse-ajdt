@@ -18,7 +18,7 @@
 
   <groupId>org.maven.ide.eclipse.ajdt</groupId>
   <artifactId>org.maven.ide.eclipse.ajdt.parent</artifactId>
-  <version>0.13.0-SNAPSHOT</version>
+  <version>0.13.0.e36</version>
   <packaging>pom</packaging>
 
   <name>Maven Integration for Eclipse AJDT (Parent)</name>
@@ -27,7 +27,7 @@
     <tycho-version>0.12.0</tycho-version>
     <m2eclipse-core.version>1.0.0.201106061504</m2eclipse-core.version>
     <m2eclipse-core.site>1.0.0/N/${m2eclipse-core.version}</m2eclipse-core.site>
-    <target.platform>m2e-e37</target.platform> 
+    <target.platform>m2e-e36</target.platform> 
     <m2e.site-compressed>http://repository.sonatype.org/service/local/repositories/forge-sites/content-compressed/</m2e.site-compressed>
   </properties>
 
@@ -43,6 +43,19 @@
 
   <build>
     <plugins>
+
+      <plugin>
+	<groupId>org.codehaus.mojo</groupId>
+	<artifactId>versions-maven-plugin</artifactId>
+	<version>1.2</version>
+      </plugin>
+
+      <plugin>
+	<groupId>org.eclipse.tycho</groupId>
+	<artifactId>tycho-versions-plugin</artifactId>
+	<version>${tycho-version}</version>
+      </plugin>
+
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-maven-plugin</artifactId>

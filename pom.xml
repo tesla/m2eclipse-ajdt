@@ -59,7 +59,7 @@
 	<modules>
 		<!-- <module>org.maven.ide.eclipse.ajdt.target-platform</module> -->
 		<module>org.maven.ide.eclipse.ajdt</module>
-		<!-- <module>org.maven.ide.eclipse.ajdt.tests</module> -->
+		<module>org.maven.ide.eclipse.ajdt.tests</module>
 		<module>org.maven.ide.eclipse.ajdt.feature</module>
 		<module>org.maven.ide.eclipse.ajdt.site</module>
 	</modules>

@@ -18,8 +18,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
-import org.maven.ide.eclipse.project.ResolverConfiguration;
-import org.maven.ide.eclipse.tests.common.AbstractMavenProjectTestCase;
+
 
 /**
  * @author Igor Fedorenko

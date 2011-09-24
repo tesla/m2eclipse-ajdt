@@ -17,6 +17,8 @@ import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.eclipse.core.resources.IProject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -54,6 +56,9 @@ import org.eclipse.core.resources.IProject;
  * @author Eugene Kuleshov
  */
 class AspectJPluginConfiguration {
+  
+  private static final Logger LOGGER = LoggerFactory.getLogger(AspectJPluginConfiguration.class);
+  
   Plugin plugin;
 
   AspectJPluginConfiguration(Plugin plugin) {
@@ -83,6 +88,14 @@ class AspectJPluginConfiguration {
     return result;
   }
 
+  private String getElementValue(Xpp3Dom parent, String childName) {
+    Xpp3Dom element = parent.getChild(childName);
+    if(element == null ) {
+      return null;
+    }
+    return element.getValue();
+  }
+  
   private void collectModules(Set<String> result, Xpp3Dom dom, String names, String name) {
     if (dom == null) {
       return;
@@ -99,8 +112,16 @@ class AspectJPluginConfiguration {
     }
 
     for(int i = 0; i < aspectLibrary.length; i++ ) {
-      String groupId = aspectLibrary[i].getChild("groupId").getValue();
-      String artifactId = aspectLibrary[i].getChild("artifactId").getValue();
+      String groupId = getElementValue(aspectLibrary[i], "groupId");
+      if(groupId==null) {
+        LOGGER.warn("groupId not found");
+        continue;
+      }
+      String artifactId = getElementValue(aspectLibrary[i],"artifactId");
+      if(artifactId==null) {
+        LOGGER.warn("artifacId not found");
+        continue;
+      }
       result.add(groupId + ":" + artifactId);
     }
   }

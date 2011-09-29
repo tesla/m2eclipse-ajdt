@@ -18,8 +18,9 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
-import org.maven.ide.eclipse.project.ResolverConfiguration;
-import org.maven.ide.eclipse.tests.common.AbstractMavenProjectTestCase;
+import org.eclipse.m2e.core.project.ResolverConfiguration;
+import org.eclipse.m2e.tests.common.AbstractMavenProjectTestCase;
+
 
 /**
  * @author Igor Fedorenko
@@ -31,13 +32,13 @@ public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
   protected void setUp() throws Exception {
     super.setUp();
 
-    origGoalsOnImport = mavenConfiguration.getGoalOnImport();
-    mavenConfiguration.setGoalOnImport("process-test-classes");
+//    origGoalsOnImport = mavenConfiguration.getGoalOnImport();
+//    mavenConfiguration.setGoalOnImport("process-test-classes");
   }
 
   protected void tearDown() throws Exception {
-    mavenConfiguration.setGoalOnImport(origGoalsOnImport);
-
+//    mavenConfiguration.setGoalOnImport(origGoalsOnImport);
+//
     super.tearDown();
   }
   

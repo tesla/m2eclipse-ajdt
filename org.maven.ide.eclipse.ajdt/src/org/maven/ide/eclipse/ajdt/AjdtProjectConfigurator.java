@@ -20,12 +20,13 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.maven.ide.eclipse.jdt.IClasspathDescriptor;
-import org.maven.ide.eclipse.jdt.IClasspathEntryDescriptor;
-import org.maven.ide.eclipse.jdt.IJavaProjectConfigurator;
-import org.maven.ide.eclipse.project.IMavenProjectFacade;
-import org.maven.ide.eclipse.project.configurator.AbstractProjectConfigurator;
-import org.maven.ide.eclipse.project.configurator.ProjectConfigurationRequest;
+import org.eclipse.m2e.core.project.IMavenProjectFacade;
+import org.eclipse.m2e.core.project.configurator.AbstractProjectConfigurator;
+import org.eclipse.m2e.core.project.configurator.ProjectConfigurationRequest;
+import org.eclipse.m2e.jdt.IClasspathDescriptor;
+import org.eclipse.m2e.jdt.IClasspathEntryDescriptor;
+import org.eclipse.m2e.jdt.IJavaProjectConfigurator;
+
 
 
 /**
@@ -82,12 +83,14 @@ public class AjdtProjectConfigurator extends AbstractProjectConfigurator impleme
           String key = descriptor.getGroupId() + ":" + descriptor.getArtifactId();
           Set<String> aspectLibraries = config.getAspectLibraries(); // from pom.xml
           if(aspectLibraries != null && aspectLibraries.contains(key)) {
-            descriptor.addClasspathAttribute(AspectJCorePreferences.ASPECTPATH_ATTRIBUTE);
+            //descriptor.addClasspathAttribute(AspectJCorePreferences.ASPECTPATH_ATTRIBUTE);
+            descriptor.getClasspathAttributes().put(AspectJCorePreferences.ASPECTPATH_ATTRIBUTE_NAME, AspectJCorePreferences.ASPECTPATH_ATTRIBUTE_NAME);
             continue;
           }
           Set<String> inpathDependencies = config.getInpathDependencies();
           if (inpathDependencies != null && inpathDependencies.contains(key)) {
-            descriptor.addClasspathAttribute(AspectJCorePreferences.INPATH_ATTRIBUTE);
+            //descriptor.addClasspathAttribute(AspectJCorePreferences.INPATH_ATTRIBUTE);
+            descriptor.getClasspathAttributes().put(AspectJCorePreferences.INPATH_ATTRIBUTE_NAME, AspectJCorePreferences.INPATH_ATTRIBUTE_NAME);
           }
         }
       }

@@ -10,33 +10,23 @@ package org.maven.ide.eclipse.ajdt;
 
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import org.apache.maven.plugin.MojoExecution;
-import org.apache.maven.project.MavenProject;
-
 import org.eclipse.ajdt.core.AspectJCorePreferences;
 import org.eclipse.ajdt.core.AspectJPlugin;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-
+import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.m2e.core.project.IMavenProjectFacade;
 import org.eclipse.m2e.core.project.configurator.ProjectConfigurationRequest;
 import org.eclipse.m2e.jdt.AbstractJavaProjectConfigurator;
 import org.eclipse.m2e.jdt.IClasspathDescriptor;
 import org.eclipse.m2e.jdt.IClasspathEntryDescriptor;
-
-import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.m2e.core.project.configurator.AbstractProjectConfigurator;
-import org.eclipse.m2e.jdt.IJavaProjectConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -114,7 +104,7 @@ public class AjdtProjectConfigurator extends AbstractJavaProjectConfigurator {
       }
       else {
         log.info("No aspect source folder found. Failing back to 'src/main/aspect'");
-        value = new File("src/main/aspect");        
+        value = new File("src/main/aspect");
       }
       return sourceFolders;
   }

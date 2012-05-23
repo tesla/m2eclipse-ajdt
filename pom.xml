@@ -1,120 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Copyright (c) 2008 Sonatype, Inc.
-  All rights reserved. This program and the accompanying materials
-  are made available under the terms of the Eclipse Public License v1.0
-  which accompanies this distribution, and is available at
-  http://www.eclipse.org/legal/epl-v10.html
--->
+<!-- Copyright (c) 2008 Sonatype, Inc. All rights reserved. This program 
+	and the accompanying materials are made available under the terms of the 
+	Eclipse Public License v1.0 which accompanies this distribution, and is available 
+	at http://www.eclipse.org/legal/epl-v10.html -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.sonatype.forge</groupId>
-    <artifactId>forge-parent</artifactId>
-    <version>10</version>
-  </parent>
+	<prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
 
-  <groupId>org.maven.ide.eclipse.ajdt</groupId>
-  <artifactId>org.maven.ide.eclipse.ajdt.parent</artifactId>
-  <version>0.13.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+	<parent>
+		<groupId>org.sonatype.forge</groupId>
+		<artifactId>forge-parent</artifactId>
+		<version>10</version>
+	</parent>
 
-  <name>Maven Integration for Eclipse AJDT (Parent)</name>
+	<groupId>org.maven.ide.eclipse.ajdt</groupId>
+	<artifactId>org.maven.ide.eclipse.ajdt.parent</artifactId>
+	<version>0.12.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-  <properties>
-    <tycho-version>0.12.0</tycho-version>
-    <m2eclipse-core.version>1.0.0.201106061504</m2eclipse-core.version>
-    <m2eclipse-core.site>1.0.0/N/${m2eclipse-core.version}</m2eclipse-core.site>
-    <target.platform>m2e-e37</target.platform> 
-    <m2e.site-compressed>http://repository.sonatype.org/service/local/repositories/forge-sites/content-compressed/</m2e.site-compressed>
-  </properties>
+	<name>Maven Integration for Eclipse AJDT (Parent)</name>
 
-  <modules>
-    <module>org.maven.ide.eclipse.ajdt.target-platform</module>
-    <module>org.maven.ide.eclipse.ajdt</module>
-    <module>org.maven.ide.eclipse.ajdt.tests</module>
-    <module>org.maven.ide.eclipse.ajdt.feature</module>
-  </modules>
+	<repositories>
+		<repository>
+			<id>rso</id>
+			<url>http://repository.sonatype.org/content/groups/sonatype-public-grid</url>
+		</repository>
 
-  <repositories>
-  </repositories>
+		<repository>
+			<id>helios</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/indigo</url>
+		</repository>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-maven-plugin</artifactId>
-        <version>${tycho-version}</version>
-        <extensions>true</extensions>
-      </plugin>
+		<repository>
+			<id>m2e</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/technology/m2e/releases/1.0</url>
+		</repository>
+		<repository>
+			<id>ajdt</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/tools/ajdt/37/update</url>
+		</repository>
+	</repositories>
 
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>target-platform-configuration</artifactId>
-        <version>${tycho-version}</version>
-        <configuration>
-          <resolver>p2</resolver>
-          <target>
-            <artifact>
-              <groupId>org.maven.ide.eclipse.ajdt</groupId>
-              <artifactId>org.maven.ide.eclipse.ajdt.target-platform</artifactId>
-              <version>${project.version}</version>
-              <classifier>${target.platform}</classifier>
-            </artifact>
-          </target>
-          <ignoreTychoRepositories>true</ignoreTychoRepositories>
-        </configuration>
-      </plugin>
-    </plugins>
+	<properties>
+		<tycho-version>0.12.0</tycho-version>
+		<!-- <m2eclipse-core.version>0.10.2.20100623-1649</m2eclipse-core.version> -->
+		<!-- <m2eclipse-core.site>0.10.2/S/${m2eclipse-core.version}</m2eclipse-core.site> -->
+		<!-- <target.platform>m2e-e36</target.platform> -->
+		<!-- <m2e.site-compressed>http://repository.sonatype.org/service/local/repositories/forge-sites/content-compressed/</m2e.site-compressed> -->
+	</properties>
 
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.eclipse.tycho</groupId>
-          <artifactId>maven-osgi-test-plugin</artifactId>
-          <version>${tycho-version}</version>
-          <configuration>
-            <useUIHarness>true</useUIHarness>
-            <includes>
-              <include>**/*Test.java</include>
-            </includes>
-            <argLine>${tycho.test.jvmArgs}</argLine>
-            <!-- kill test JVM it tests take more than 10 minutes (600 seconds) 
-              to finish -->
-            <forkedProcessTimeoutInSeconds>7200</forkedProcessTimeoutInSeconds>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
+	<modules>
+		<!-- <module>org.maven.ide.eclipse.ajdt.target-platform</module> -->
+		<module>org.maven.ide.eclipse.ajdt</module>
+		<module>org.maven.ide.eclipse.ajdt.tests</module>
+		<module>org.maven.ide.eclipse.ajdt.feature</module>
+		<module>org.maven.ide.eclipse.ajdt.site</module>
+	</modules>
 
-  <profiles>
-    <profile>
-      <id>sun-jvm</id>
-      <activation>
-        <property>
-          <name>java.vendor.url</name>
-          <value>http://java.sun.com/</value>
-        </property>
-      </activation>
-      <properties>
-        <tycho.test.jvmArgs>-Xmx800m -XX:MaxPermSize=256m</tycho.test.jvmArgs>
-      </properties>
-    </profile>
-    <profile>
-      <id>osx</id>
-      <activation>
-        <property>
-          <name>java.vendor.url</name>
-          <value>http://www.apple.com/</value>
-        </property>
-      </activation>
-      <properties>
-        <tycho.test.jvmArgs>-Xmx800m -XX:MaxPermSize=256m -Dosgi.ws=cocoa -XstartOnFirstThread</tycho.test.jvmArgs>
-        <osgi.ws>cocoa</osgi.ws>
-      </properties>
-    </profile>
-  </profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>maven-osgi-packaging-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<deployableFeature>true</deployableFeature>
+				</configuration>
+			</plugin>
+
+
+
+			<plugin>
+				<groupId>org.sonatype.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+					<target>
+						<artifact>
+							<groupId>org.eclipse.m2e</groupId>
+							<artifactId>target-platform</artifactId>
+							<version>${project.version}</version>
+						</artifact>
+					</target>
+					<ignoreTychoRepositories>true</ignoreTychoRepositories>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>sun-jvm</id>
+			<activation>
+				<property>
+					<name>java.vendor.url</name>
+					<value>http://java.sun.com/</value>
+				</property>
+			</activation>
+			<properties>
+				<tycho.test.jvmArgs>-Xmx800m -XX:MaxPermSize=256m</tycho.test.jvmArgs>
+			</properties>
+		</profile>
+		<profile>
+			<id>osx</id>
+			<activation>
+				<property>
+					<name>java.vendor.url</name>
+					<value>http://www.apple.com/</value>
+				</property>
+			</activation>
+			<properties>
+				<tycho.test.jvmArgs>-Xmx800m -XX:MaxPermSize=256m -Dosgi.ws=cocoa
+					-XstartOnFirstThread</tycho.test.jvmArgs>
+				<osgi.ws>cocoa</osgi.ws>
+			</properties>
+		</profile>
+	</profiles>
 </project>

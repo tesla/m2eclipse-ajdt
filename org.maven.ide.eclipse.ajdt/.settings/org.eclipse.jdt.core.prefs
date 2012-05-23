@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 #Thu Jul 28 13:43:12 PDT 2011
 eclipse.preferences.version=1
 org.eclipse.jdt.core.builder.cleanOutputFolder=clean
 org.eclipse.jdt.core.builder.duplicateResourceTask=warning
 org.eclipse.jdt.core.builder.invalidClasspath=ignore
+=======
+#Fri Sep 23 10:53:11 CEST 2011
+eclipse.preferences.version=1
+org.eclipse.jdt.core.builder.cleanOutputFolder=clean
+org.eclipse.jdt.core.builder.duplicateResourceTask=warning
+org.eclipse.jdt.core.builder.invalidClasspath=abort
+>>>>>>> sonatype/master
 org.eclipse.jdt.core.builder.recreateModifiedClassFileInOutputFolder=ignore
 org.eclipse.jdt.core.builder.resourceCopyExclusionFilter=*.uad,*.ucd,*.uld,*.upd,*.udd,*.uod,*.usd,*.utd,*.uud,*.odd,*.ead,*.ecd,*.eld,*.epd,*.edd,*.eod,*.esd,*.etd,*.eud,*.urd*.uml,*.ecore,,*.launch,*.ucls
 org.eclipse.jdt.core.circularClasspath=error
@@ -158,9 +166,18 @@ org.eclipse.jdt.core.formatter.indent_statements_compare_to_body=true
 org.eclipse.jdt.core.formatter.indent_switchstatements_compare_to_cases=true
 org.eclipse.jdt.core.formatter.indent_switchstatements_compare_to_switch=true
 org.eclipse.jdt.core.formatter.indentation.size=2
+<<<<<<< HEAD
 org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_local_variable=insert
 org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_member=insert
 org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_parameter=do not insert
+=======
+org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_field=insert
+org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_local_variable=insert
+org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_method=insert
+org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_package=insert
+org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_parameter=do not insert
+org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_type=insert
+>>>>>>> sonatype/master
 org.eclipse.jdt.core.formatter.insert_new_line_after_opening_brace_in_array_initializer=do not insert
 org.eclipse.jdt.core.formatter.insert_new_line_at_end_of_file_if_missing=insert
 org.eclipse.jdt.core.formatter.insert_new_line_before_catch_in_try_statement=do not insert

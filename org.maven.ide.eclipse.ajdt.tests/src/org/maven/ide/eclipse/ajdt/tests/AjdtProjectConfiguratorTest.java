@@ -28,7 +28,22 @@ import org.eclipse.m2e.tests.common.AbstractMavenProjectTestCase;
 @SuppressWarnings("restriction")
 public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
   
-  public void testSimple01_import() throws IOException, CoreException, InterruptedException {
+  private String origGoalsOnImport;
+  
+  protected void setUp() throws Exception {
+    super.setUp();
+
+//    origGoalsOnImport = mavenConfiguration.getGoalOnImport();
+//    mavenConfiguration.setGoalOnImport("process-test-classes");
+  }
+
+  protected void tearDown() throws Exception {
+//    mavenConfiguration.setGoalOnImport(origGoalsOnImport);
+//
+    super.tearDown();
+  }
+  
+  public void testSimple01_import() throws IOException, CoreException {
     ResolverConfiguration configuration = new ResolverConfiguration();
     IProject project = importProject("projects/p01/pom.xml", configuration);
     

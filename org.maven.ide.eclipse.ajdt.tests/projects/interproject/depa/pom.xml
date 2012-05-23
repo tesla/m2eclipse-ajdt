@@ -5,9 +5,7 @@
     <artifactId>interproject</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>interproject</groupId>
   <artifactId>depa</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <dependencies>
     <dependency>
       <groupId>aspectj</groupId>
@@ -15,13 +13,19 @@
       <version>1.5.4</version>
     </dependency>
     <dependency>
-	  <groupId>ajdttest</groupId>
+	  <groupId>interproject</groupId>
 	  <artifactId>aspect</artifactId>
 	  <version>0.0.1-SNAPSHOT</version>
     </dependency>
+    <dependency>
+    	<groupId>junit</groupId>
+    	<artifactId>junit</artifactId>
+    	<scope>test</scope>
+    	<version>3.8</version>
+    </dependency>
   </dependencies>
 
-
+ 
   <build>
     <plugins>
       <plugin>
@@ -37,9 +41,15 @@
             </goals>
             <configuration>
               <aspectLibraries>
-                <aspectLibrary>
-				  <groupId>ajdttest</groupId>
+              	<!-- resolve in workspace -->
+              	<aspectLibrary>
+				  <groupId>interproject</groupId>
 				  <artifactId>aspect</artifactId>
+                </aspectLibrary>
+              	<!-- resolve in repo -->
+              	<aspectLibrary>
+				  <groupId>junit</groupId>
+				  <artifactId>junit</artifactId>
                 </aspectLibrary>
               </aspectLibraries>
             </configuration>

@@ -20,4 +20,31 @@
 
   <name>Maven Integration for Eclipse AJDT tests</name>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<application>org.eclipse.ui.ide.workbench</application>
+					<failIfNoTests>true</failIfNoTests>
+					<showEclipseLog>true</showEclipseLog>
+					<skip>false</skip>
+					<skipTests>false</skipTests>
+					<testSuite>org.maven.ide.eclipse.ajdt.tests</testSuite>
+					<testClass>org.maven.ide.eclipse.ajdt.tests.AjdtProjectConfiguratorTest</testClass>
+					<explodedBundles>
+						<explodedBundle>org.junit</explodedBundle>
+						<explodedBundle>org.aspectj.runtime</explodedBundle>
+						<explodedBundle>org.aspectj.weaver</explodedBundle>
+						<explodedBundle>org.aspectj.ajde</explodedBundle>
+ 					</explodedBundles>
+					<systemProperties>
+						<grails.home>${grails.home}</grails.home>
+					</systemProperties>
+      	</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

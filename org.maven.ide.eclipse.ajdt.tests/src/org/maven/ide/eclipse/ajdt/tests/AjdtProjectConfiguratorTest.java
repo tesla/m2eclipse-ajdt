@@ -72,7 +72,7 @@ public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
 
     IJavaProject javaProject = JavaCore.create(project);
     List<IClasspathEntry> sources = getSources(javaProject.getRawClasspath());
-    assertEquals(3, sources.size());
+    assertEquals(sources.toString(), 3, sources.size());
     assertEquals(project.getFolder("src/main/java").getFullPath(), sources.get(0).getPath());
     assertEquals(project.getFolder("src/test/java").getFullPath(), sources.get(1).getPath());
     assertEquals(project.getFolder("src/main/aspect").getFullPath(), sources.get(2).getPath());

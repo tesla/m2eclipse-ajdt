@@ -28,6 +28,8 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<application>org.eclipse.ui.ide.workbench</application>
+					<useUIThread>true</useUIThread>
+					<useUIHarness>true</useUIHarness>
 					<failIfNoTests>true</failIfNoTests>
 					<showEclipseLog>true</showEclipseLog>
 					<skip>false</skip>
@@ -40,9 +42,6 @@
 						<explodedBundle>org.aspectj.weaver</explodedBundle>
 						<explodedBundle>org.aspectj.ajde</explodedBundle>
  					</explodedBundles>
-					<systemProperties>
-						<grails.home>${grails.home}</grails.home>
-					</systemProperties>
       	</configuration>
 			</plugin>
 		</plugins>

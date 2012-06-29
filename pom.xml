@@ -44,7 +44,7 @@
 		<repository>
 			<id>ajdt</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/tools/ajdt/37/update</url>
+			<url>http://download.eclipse.org/tools/ajdt/37/dev/update</url>
 		</repository>
 	</repositories>
 

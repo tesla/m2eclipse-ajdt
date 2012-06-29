@@ -16,13 +16,17 @@ import java.util.List;
 import org.eclipse.ajdt.core.AspectJCorePreferences;
 import org.eclipse.ajdt.core.AspectJPlugin;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jdt.internal.ui.JavaPlugin;
 import org.eclipse.m2e.core.MavenPlugin;
 import org.eclipse.m2e.core.project.ResolverConfiguration;
 import org.eclipse.m2e.tests.common.AbstractMavenProjectTestCase;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * @author Igor Fedorenko
@@ -30,10 +34,18 @@ import org.eclipse.m2e.tests.common.AbstractMavenProjectTestCase;
 @SuppressWarnings("restriction")
 public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
   
-  private String origGoalsOnImport;
+//  private String origGoalsOnImport;
   
+  private Display display;
+
   protected void setUp() throws Exception {
     super.setUp();
+    PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+      
+      public void run() {
+        JavaPlugin.getDefault();
+      }
+    });
 
 //    origGoalsOnImport = mavenConfiguration.getGoalOnImport();
 //    mavenConfiguration.setGoalOnImport("process-test-classes");
@@ -42,6 +54,9 @@ public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
   protected void tearDown() throws Exception {
 //    mavenConfiguration.setGoalOnImport(origGoalsOnImport);
 //
+    if (display != null) {
+      display.dispose();
+    }
     super.tearDown();
   }
   
@@ -112,13 +127,13 @@ public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
     String[] project3InPath = AspectJCorePreferences.getResolvedProjectInpath(projects[3]);
     String[] project3AspectPath = AspectJCorePreferences.getResolvedProjectAspectPath(projects[3]);
     
-    assertTrue("Invalid aspect path for project 'depa': " + project1InPath[0], project1InPath[0].contains("/depi/target/classes:/depi/target/test-classes:"));
+    assertTrue("Invalid aspect path for project 'depa': " + project1InPath[0], project1InPath[0].contains("/depi/target/classes"));
     assertTrue("Invalid aspect path for project 'depa': " + project1InPath[0], project1InPath[0].contains("junit-3.8.jar"));
     assertEquals("Invalid aspect path for project 'aspect'", "", project1AspectPath[0]);
     
     assertEquals("Invalid in path for project 'depa'", "", project2InPath[0]);
     // note: this is actually a bug in ajdt that the aspect path contains target/classes twice this is because the aspect folder has two source folders whose output folders go to target/classes 
-    assertTrue("Invalid aspect path for project 'depa': " + project2AspectPath[0], project2AspectPath[0].contains("/aspect/target/classes:/aspect/target/test-classes:/aspect/target/classes:"));
+    assertTrue("Invalid aspect path for project 'depa': " + project2AspectPath[0], project2AspectPath[0].contains("/aspect/target/classes:"));
     assertTrue("Invalid aspect path for project 'depa': " + project2AspectPath[0], project2AspectPath[0].contains("junit-3.8.jar"));
     
     assertEquals("Invalid in path for project 'depi'", "", project3InPath[0]);

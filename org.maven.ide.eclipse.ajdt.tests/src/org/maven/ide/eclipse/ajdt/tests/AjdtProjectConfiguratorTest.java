@@ -85,7 +85,7 @@ public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
 
   public void testSimple02_import() throws IOException, CoreException, InterruptedException {
     ResolverConfiguration configuration = new ResolverConfiguration();
-    IProject project = importProject("projects/p01/pom.xml", configuration);
+    IProject project = importProject("projects/p02/pom.xml", configuration);
     
     waitForJobsToComplete();
     
@@ -108,6 +108,7 @@ public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
     assertTrue("Entry kind should be LIBRARY", aspectPath[2].startsWith("1")); //$NON-NLS-1$ //$NON-NLS-2$
   }
   
+  // TODOO disabled
   public void _test_interProject() throws IOException, CoreException {
     ResolverConfiguration configuration = new ResolverConfiguration();
     IProject[] projects = importProjects("projects", new String[] {"/p01/pom.xml", "/p02/pom.xml"}, configuration);

@@ -72,10 +72,8 @@ public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
 
     IJavaProject javaProject = JavaCore.create(project);
     List<IClasspathEntry> sources = getSources(javaProject.getRawClasspath());
-    assertEquals(sources.toString(), 3, sources.size());
-    assertEquals(project.getFolder("src/main/java").getFullPath(), sources.get(0).getPath());
-    assertEquals(project.getFolder("src/test/java").getFullPath(), sources.get(1).getPath());
-    assertEquals(project.getFolder("src/main/aspect").getFullPath(), sources.get(2).getPath());
+    assertEquals(sources.toString(), 1, sources.size());
+    assertEquals(project.getFolder("src/main/aspect").getFullPath(), sources.get(0).getPath());
 
     String[] aspectPath = AspectJCorePreferences.getResolvedProjectAspectPath(project);
     assertEquals("The result of getResolvedProjectAspectPath is always an array of length 3", 3, aspectPath.length);
@@ -85,6 +83,31 @@ public class AjdtProjectConfiguratorTest extends AbstractMavenProjectTestCase {
     assertTrue("Entry kind should be LIBRARY", aspectPath[2].startsWith("1")); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
+  public void testSimple02_import() throws IOException, CoreException, InterruptedException {
+    ResolverConfiguration configuration = new ResolverConfiguration();
+    IProject project = importProject("projects/p01/pom.xml", configuration);
+    
+    waitForJobsToComplete();
+    
+    MavenPlugin.getProjectConfigurationManager().updateProjectConfiguration(project, monitor);
+    
+    assertTrue("Expected AJDT nature", project.hasNature(AspectJPlugin.ID_NATURE));
+    
+    IJavaProject javaProject = JavaCore.create(project);
+    List<IClasspathEntry> sources = getSources(javaProject.getRawClasspath());
+    assertEquals(sources.toString(), 3, sources.size());
+    assertEquals(project.getFolder("src/main/java").getFullPath(), sources.get(0).getPath());
+    assertEquals(project.getFolder("src/test/java").getFullPath(), sources.get(1).getPath());
+    assertEquals(project.getFolder("src/main/aspect").getFullPath(), sources.get(2).getPath());
+    
+    String[] aspectPath = AspectJCorePreferences.getResolvedProjectAspectPath(project);
+    assertEquals("The result of getResolvedProjectAspectPath is always an array of length 3", 3, aspectPath.length);
+    assertTrue(aspectPath[0].contains("/maven-core-"));
+    assertEquals("Should be one segment of this aspect path", aspectPath[0].length()-1, aspectPath[0].indexOf(':'));
+    assertTrue("Content kind should be BINARY",aspectPath[1].startsWith("2")); //$NON-NLS-1$ //$NON-NLS-2$
+    assertTrue("Entry kind should be LIBRARY", aspectPath[2].startsWith("1")); //$NON-NLS-1$ //$NON-NLS-2$
+  }
+  
   public void _test_interProject() throws IOException, CoreException {
     ResolverConfiguration configuration = new ResolverConfiguration();
     IProject[] projects = importProjects("projects", new String[] {"/p01/pom.xml", "/p02/pom.xml"}, configuration);

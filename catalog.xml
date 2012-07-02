@@ -1,0 +1,26 @@
+<catalog>
+  <catalogItems>
+    <catalogItem>
+      <categoryId>org.eclipse.m2e.discovery.category.lifecycles</categoryId>
+      <description>AspectJ m2e configurator</description>
+      <groupId>lifecycles</groupId>
+      <id>org.maven.ide.eclipse.ajdt</id>
+      <kind>lifecycles</kind>
+      <license>EPL</license>
+      <name>AspectJ</name>
+      <provider>SpringSource</provider>
+      <p2>
+        <repositoryUrl>http://dist.springsource.org/release/AJDT/composite/</repositoryUrl>
+        <iuId>org.maven.ide.eclipse.ajdt.feature.feature.group</iuId>
+        <iuVersion>0.13.0.201107281640</iuVersion>
+        <lifecycleMappingIU>
+          <iuId>org.maven.ide.eclipse.ajdt</iuId>
+        </lifecycleMappingIU>
+      </p2>
+      <overview>
+        <summary>Maven Integration for AspectJ Development Tools</summary>
+        <url>http://eclipse.org/ajdt</url>
+      </overview>
+    </catalogItem>
+  </catalogItems>
+</catalog>
